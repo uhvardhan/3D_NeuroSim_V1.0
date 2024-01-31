@@ -2,6 +2,13 @@
 
 The DNN+NeuroSim framework was developed by [Prof. Shimeng Yu's group](https://shimeng.ece.gatech.edu/) (Georgia Institute of Technology). The model is made publicly available on a non-commercial basis. Copyright of the model is maintained by the developers, and the model is distributed under the terms of the [Creative Commons Attribution-NonCommercial 4.0 International Public License](http://creativecommons.org/licenses/by-nc/4.0/legalcode)
 
+```
+Updates by Harshvardhan Uppaluru - Update as of January 31, 2024!:
+1. Fixed weak script method issues.
+2. Fixed torchvision.models.utils to torch.hub.
+3. Changed some of the parameters for cross-bar array.
+```
+
 :star2: This is the released 3D+NeuroSim V1.0 (June 1, 2021) for the tool, and this version has **_improved following inference engine estimation_**:
 ```
 1. Enabled electrical-thermal co-simulation of 3D integrated (monolithic and heterogeneous) CIM accelerators

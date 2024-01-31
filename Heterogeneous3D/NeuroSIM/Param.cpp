@@ -62,7 +62,7 @@ Param::Param() {
 								// 2: cell.memCellType = Type::RRAM
 								// 3: cell.memCellType = Type::FeFET
 	
-	accesstype = 1;         	// 1: cell.accessType = CMOS_access
+	accesstype = 4;         	// 1: cell.accessType = CMOS_access
 								// 2: cell.accessType = BJT_access
 								// 3: cell.accessType = diode_access
 								// 4: cell.accessType = none_access (Crossbar Array)
@@ -101,7 +101,7 @@ Param::Param() {
 	
 	pipeline = false;            // false: layer-by-layer process --> huge leakage energy in HP
 								// true: pipeline process
-	speedUpDegree = 8;          // 1 = no speed up --> original speed
+	speedUpDegree = 1;          // 1 = no speed up --> original speed
 								// 2 and more : speed up ratio, the higher, the faster
 								// A speed-up degree upper bound: when there is no idle period during each layer --> no need to further fold the system clock
 								// This idle period is defined by IFM sizes and data flow, the actual process latency of each layer may be different due to extra peripheries
@@ -182,11 +182,16 @@ Param::Param() {
 	heightInFeatureSizeCrossbar = 2;    // Crossbar Cell height in feature size
 	widthInFeatureSizeCrossbar = 2;     // Crossbar Cell width in feature size
 	
-	resistanceOn = 6e3;               // Ron resistance at Vr in the reported measurement data (need to recalculate below if considering the nonlinearity)
-	resistanceOff = 6e3*150;           // Roff resistance at Vr in the reported measurement dat (need to recalculate below if considering the nonlinearity)
-	maxConductance = (double) 1/resistanceOn;
-	minConductance = (double) 1/resistanceOff;
-	
+	// resistanceOn = 6e3;               // Ron resistance at Vr in the reported measurement data (need to recalculate below if considering the nonlinearity)
+	// resistanceOff = 6e3*150;           // Roff resistance at Vr in the reported measurement dat (need to recalculate below if considering the nonlinearity)
+	// maxConductance = (double) 1/resistanceOn;
+	// minConductance = (double) 1/resistanceOff;
+
+	maxConductance = 9.30e-05;       // Maximum cell conductance, which is used to calculate the weight of the neural network
+    minConductance = 4.75e-06;        // Minimum cell conductance, which is used to calculate the weight of the neural network
+    resistanceOn = (double) 1/maxConductance;
+    resistanceOff = (double) 1/minConductance;
+
 	readVoltage = 0.5;	                // On-chip read voltage for memory cell
 	readPulseWidth = 10e-9;             // read pulse width in sec
 	accessVoltage = 1.1;                // Gate voltage for the transistor in 1T1R
