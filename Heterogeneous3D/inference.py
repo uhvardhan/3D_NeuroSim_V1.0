@@ -17,8 +17,8 @@ import csv
 from datetime import datetime
 from subprocess import call
 parser = argparse.ArgumentParser(description='PyTorch CIFAR-X Example')
-parser.add_argument('--dataset', default='cifar10', help='cifar10|cifar100|imagenet')
-parser.add_argument('--model', default='VGG8', help='VGG8|DenseNet40|ResNet18')
+parser.add_argument('--dataset', default='imagenet', help='cifar10|cifar100|imagenet')
+parser.add_argument('--model', default='ResNet18', help='VGG8|DenseNet40|ResNet18')
 parser.add_argument('--mode', default='WAGE', help='WAGE|FP')
 parser.add_argument('--batch_size', type=int, default=500, help='input batch size for training (default: 64)')
 parser.add_argument('--epochs', type=int, default=200, help='number of epochs to train (default: 10)')
@@ -35,11 +35,11 @@ parser.add_argument('--wl_activate', default=8)
 parser.add_argument('--wl_error', default=8)
 # Hardware Properties
 # if do not consider hardware effects, set inference=0
-parser.add_argument('--inference', default=0, help='run hardware inference simulation')
+parser.add_argument('--inference', default=1, help='run hardware inference simulation')
 parser.add_argument('--subArray', default=128, help='size of subArray (e.g. 128*128)')
 parser.add_argument('--ADCprecision', default=5, help='ADC precision (e.g. 5-bit)')
 parser.add_argument('--cellBit', default=4, help='cell precision (e.g. 4-bit/cell)')
-parser.add_argument('--onoffratio', default=10, help='device on/off ratio (e.g. Gmax/Gmin = 3)')
+parser.add_argument('--onoffratio', default=19.57, help='device on/off ratio (e.g. Gmax/Gmin = 3)')
 parser.add_argument('--temp', default=300, help='chip operation temperature (K)')
 # if do not run the device retention / conductance variation effects, set vari=0, v=0
 parser.add_argument('--vari', default=0, help='conductance variation (e.g. 0.1 standard deviation to generate random variation)')
